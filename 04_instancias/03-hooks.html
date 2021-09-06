@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hooks</title>
+</head>
+<body>
+    <!-- CDN VUE V2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        
+        {{titulo}}  <br>
+        <input type="text" v-model="nombre"> <br>
+        {{nombre}}
+        
+    </div>
+    <hr>
+    
+<!-- instancies independents -->
+    <script>
+        const uno = new Vue({
+            el: '#app',
+            data:{
+                titulo: 'Eduvallve',
+                nombre: 'Eduard Vallve'
+            },
+
+            // beforeCreate = despues inicialización instancia - antes componente cree
+            beforeCreate(){
+                alert('Antes de crear componente ' + this.nombre);
+            },
+            // created = ejecuta cuando instancia, evento, propiedad, etc.
+            created(){
+                alert('Creado componente ' + this.nombre);
+            },
+            // beforeMount = se ejecuta justo antes de añadir al DOM
+            beforeMount(){
+                alert('Justo antes de añadirlo al DOM ' + this.nombre);
+            },
+            // mounted: se ejecuta después de añadirlo al DOM
+            mounted(){
+                alert('Después de añadirlo al DOM ' + this.nombre);
+            },
+            // beforeUpdate : se ejecuta cuando el objeto data cambia, el DOM no
+            beforeUpdate(){
+                alert('el objeto data cambia, pero el DOM no ' + this.nombre);
+            },
+            // updated: se ejecuta despues que el objeto data cambie - DOM muestre
+            updated(){
+                alert('el objeto data cambia en el DOM ' + this.nombre);
+            }
+            // beforeDestroy: se ejecuta justo antes de eliminar la instancia
+            // destroyed: se ejecuta cuando al instancia, directivas, etc. se ha eliminado
+        });
+
+        
+    </script>
+</body>
+</html>

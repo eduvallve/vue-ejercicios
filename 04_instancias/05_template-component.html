@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template components</title>
+</head>
+<body>
+    <!-- CDN VUE V2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        <center>
+            {{titulo}}
+        </center>
+        <p>{{temp}}</p>
+        <input type="text" v-model="nombre">
+        {{nombre}}
+        <hr>
+        <contador></contador>
+        <contador></contador>
+        <contador></contador>
+    </div>
+    <hr>
+    <!-- component - template -->
+    <script>
+        // component (pot ser reutilitzable a vue). el valor "contador" és lliure, però dha de coincidir en el compponent i en una etiqueta HTML ->
+        Vue.component('contador',{
+            // template (fragment de codi)
+            template:"<button @click='numero++'>Soy un contador {{numero}}</button>"
+            // en un component, no es pot usar la data, sinó només mètodes, com el metode inventat data(). En executar el template, només s'executa l'acció pr aquell mètode
+            ,
+            data(){
+                return{
+                    numero : 0
+                }
+            }
+        });
+        // instancia -->
+        const uno = new Vue({
+            el:'#app',
+            data:{
+                titulo: 'Eduvallve',
+                nombre: 'Eduard Vallve',
+                temp: 'Este es el componente 1'
+            }
+        });
+    </script>
+</body>
+</html>

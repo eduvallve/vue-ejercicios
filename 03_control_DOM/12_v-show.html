@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-show</title>
+</head>
+<body>
+    <!-- CDN VUE V2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <!-- v-show mostra un valor de manera booleana (true or false) -->
+    <!-- calculadora de notes. si la nota és superior a 3 l'estudiant aprova, sinó, suspen
+        |3.0 >= A - 3.0 < F|
+    -->
+    <div id="app">
+        <input type="number" v-model="nota">
+        <!-- true -->
+        <p v-show="resultado()">Pasaste el examen</p>
+        <!-- false -->
+        <p v-show="!resultado()">No pasaste el examen</p>
+    </div>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                nota:0
+            },
+            methods:{
+                resultado(){
+                    if(this.nota >= 3 & this.nota <= 5){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

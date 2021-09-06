@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro</title>
+</head>
+<body>
+    <!-- CDN VUE V2 filter('nombre',function(n){}) -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        {{'colombia' | mayuscula }} <hr>
+        {{'venezuela' | mayuscula }} <hr>
+        {{'equador' | mayuscula }} <hr>
+        {{'chile' | mayuscula }}
+    </div>
+
+    <script>
+        
+        Vue.filter('mayuscula',function(data){
+            var primerCaracter = data.charAt(0).toUpperCase();
+            var text = data.slice(1,data.length);
+            return primerCaracter + text;
+        })
+        const app = new Vue({
+            el:'#app'
+        });
+
+    </script>
+</body>
+</html>

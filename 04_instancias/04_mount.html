@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mount</title>
+</head>
+<body>
+    <!-- CDN VUE V2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+        {{titulo}}
+        <p>Este es el componente uno</p>
+        <input type="text" v-model="nombre">
+        {{nombre}}
+    </div>
+    <hr>
+    <div id="componente">
+        <p>Este es el componente dos</p>
+        <input type="text" v-model="texto">
+        {{texto}}
+        <center>
+            <button @click="montar()">Montar instancia 1</button>
+        </center>
+    </div>
+<!-- montar una instancia (mount) -->
+    <script>
+        const uno = new Vue({
+            // el: '#app',
+            data:{
+                titulo: 'Eduvallve',
+                nombre : 'Eduard Vallve',
+                temp: 'Este es el componente 1'
+            }
+        });
+
+        const dos = new Vue({
+            el:'#componente',
+            data:{
+                texto: uno.nombre,
+                temp: 'Este es el componente 2'
+            },
+            methods:{
+                montar(){
+                    uno.$mount('#app');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
